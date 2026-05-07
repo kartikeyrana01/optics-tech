@@ -6,6 +6,7 @@ import { ArrowRight, Microscope, Beaker, Settings, Pill, Droplets, ChevronLeft, 
 import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
+import MachineCarousel from '../components/MachineCarousel';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -85,6 +86,8 @@ const Home = () => {
           </Swiper>
         </div>
       </section>
+
+      <MachineCarousel />
 
       {/* Marquee Clients Section */}
       <section className="py-24 bg-dark text-white overflow-hidden border-t border-white/5">

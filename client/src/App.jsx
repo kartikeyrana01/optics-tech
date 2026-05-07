@@ -20,7 +20,7 @@ function AdminRedirect() {
   React.useEffect(() => {
     window.location.href = '/admin';
   }, []);
-  return <div className="min-h-screen bg-dark flex items-center justify-center text-white">Redirecting to Staff Portal...</div>;
+  return <div className="min-h-screen bg-primary flex items-center justify-center text-white font-bold">Redirecting to Staff Portal...</div>;
 }
 
 function App() {
@@ -62,20 +62,45 @@ function App() {
           <WhatsAppButton />
         </main>
 
-        <footer className="bg-slate-950 pt-12 pb-32 md:pb-12 border-t border-white/5 relative z-10">
-          <div className="max-w-7xl mx-auto px-4 text-center">
-            <div className="flex items-center justify-center gap-3 mb-8">
-              <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white font-bold border border-white/20">T</div>
-              <h2 className="text-white font-bold text-xl tracking-tighter">OPTICS <span className="text-xs opacity-60">Technology</span></h2>
+        <footer className="bg-dark pt-16 pb-32 md:pb-16 border-t border-white/5 relative z-10 text-white">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="grid md:grid-cols-3 gap-12 mb-12">
+              <div className="text-center md:text-left">
+                <div className="flex items-center justify-center md:justify-start gap-3 mb-6">
+                  <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center text-white font-bold shadow-lg">T</div>
+                  <h2 className="font-bold text-2xl tracking-tighter">OPTICS <span className="opacity-70 text-sm">Technology</span></h2>
+                </div>
+                <p className="text-white/70 text-sm leading-relaxed max-w-sm">
+                  Leading manufacturers and exporters of precision laboratory testing instruments for over 46 years. ISO 9001:2015 certified.
+                </p>
+              </div>
+              
+              <div className="text-center">
+                <h3 className="font-bold mb-6 text-secondary uppercase tracking-widest text-sm">Quick Links</h3>
+                <ul className="space-y-3 text-sm text-white/70">
+                  <li><a href="/" className="hover:text-white transition-colors">Home</a></li>
+                  <li><a href="/products" className="hover:text-white transition-colors">Instruments</a></li>
+                  <li><a href="/certificates" className="hover:text-white transition-colors">Certificates</a></li>
+                  <li><a href="/awards" className="hover:text-white transition-colors">Awards</a></li>
+                </ul>
+              </div>
+
+              <div className="text-center md:text-right">
+                <h3 className="font-bold mb-6 text-secondary uppercase tracking-widest text-sm">Contact Portal</h3>
+                <p className="text-sm text-white/70 mb-4">info@opticstechnology.in</p>
+                <div className="flex justify-center md:justify-end gap-4">
+                  <a href="/admin" className="px-6 py-2 bg-secondary text-primary-dark rounded-full font-bold text-xs hover:bg-white transition-all shadow-lg shadow-secondary/10">
+                    STAFF PORTAL
+                  </a>
+                </div>
+              </div>
             </div>
-            <p className="text-slate-500 text-sm mb-8">
-              &copy; {new Date().getFullYear()} Optics Technology. All Rights Reserved. <br className="hidden md:block" />
-              Manufacturer & Exporter of High-Precision Laboratory Instruments.
-            </p>
-            <div className="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-6 text-slate-400">
-               <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-               <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
-               <a href="/admin" className="text-secondary font-bold hover:text-white transition-colors">Staff Admin</a>
+
+            <div className="pt-8 border-t border-white/10 text-center">
+              <p className="text-white/50 text-xs">
+                &copy; {new Date().getFullYear()} Optics Technology. All Rights Reserved. <br className="hidden md:block" />
+                Specializing in Laboratory Instruments for Industrial Norms.
+              </p>
             </div>
           </div>
         </footer>

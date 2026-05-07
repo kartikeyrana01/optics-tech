@@ -4,9 +4,9 @@ import { CheckCircle, Microscope, ShieldCheck, Box } from 'lucide-react';
 
 const FacilityPage = () => {
   return (
-    <div className="pt-24 min-h-screen bg-dark">
+    <div className="pt-[400px] min-h-screen bg-primary">
       {/* Header */}
-      <section className="pt-32 pb-20 bg-gradient-to-b from-primary/20 to-dark">
+      <section className="pt-32 pb-20 bg-gradient-to-b from-primary to-primary/80">
         <div className="max-w-7xl mx-auto px-6">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
@@ -94,7 +94,7 @@ const FacilityPage = () => {
       </section>
 
       {/* Trust Quote */}
-      <section className="py-32 bg-dark text-center">
+      <section className="py-32 bg-primary text-center border-t border-white/10">
         <div className="max-w-4xl mx-auto px-6">
            <h2 className="text-3xl md:text-5xl font-black text-white mb-8 tracking-tighter">
              Building Trust Through <span className="text-secondary italic">Engineering Excellence.</span>

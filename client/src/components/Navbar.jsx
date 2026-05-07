@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, ChevronDown, Phone, Mail, ArrowRight } from 'lucide-react';
+import { Menu, X, Phone, Mail, Search, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
@@ -8,81 +8,126 @@ const Navbar = ({ onQuoteClick }) => {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
+    const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const navLinks = [
-    { name: 'HOME', href: '/' },
-    { name: 'LEGACY', href: '/legacy' },
-    { name: 'INSTRUMENTS', href: '/products' },
-    { name: 'CERTIFICATES', href: '/certificates' },
-    { name: 'AWARDS', href: '/awards' },
-    { name: 'GALLERY', href: '/gallery' },
-    { name: 'FACILITY', href: '/facility' },
+    { name: 'Home', href: '/' },
+    { name: 'About', href: '/legacy' },
+    { name: 'Our Products', href: '/products' },
+    { name: 'Certificates', href: '/certificates' },
+    { name: 'Awards', href: '/awards' },
+    { name: 'Gallery', href: '/gallery' },
+    { name: 'Facility', href: '/facility' },
+    { name: 'Contact Us', href: '/#contact' },
   ];
 
   return (
-    <nav id="navbar" className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? 'py-4 bg-dark/90 backdrop-blur-xl border-b border-white/10' : 'py-6 bg-transparent'}`}>
-        <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-            <Link to="/" className="flex items-center gap-3 group cursor-pointer">
-                <div className="w-12 h-12 bg-primary rounded-2xl flex items-center justify-center text-white font-bold border border-white/20 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-xl shadow-primary/20">T</div>
-                <div className="flex flex-col">
-                    <span className="text-2xl font-black tracking-tighter leading-none text-white">OPTICS</span>
-                    <span className="text-[9px] font-bold opacity-50 tracking-[0.4em] uppercase leading-none mt-1 text-white">Technology</span>
-                </div>
-            </Link>
-            
-            <div className="hidden lg:flex items-center gap-12">
-                <div className="flex items-center gap-8">
-                    {navLinks.map((link) => (
-                      <Link 
-                        key={link.name} 
-                        to={link.href}
-                        className="text-sm font-bold tracking-wider text-white hover:text-secondary transition-colors relative group"
-                      >
-                        {link.name}
-                        <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-secondary scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
-                      </Link>
-                    ))}
-                </div>
-                
-                <div className="h-6 w-px bg-white/20 mx-2"></div>
-                
-                <button 
-                  onClick={onQuoteClick}
-                  className="group flex items-center gap-3 px-8 py-3 bg-white text-dark rounded-full text-sm font-black hover:bg-secondary transition-all transform active:scale-95 shadow-xl shadow-white/5"
-                >
-                    GET QUOTE <i className="w-4 h-4 group-hover:translate-x-1 transition-transform"><ArrowRight size={16} /></i>
-                </button>
+    <header className="fixed w-full z-50 transition-all duration-500">
+      {/* 1. Thin Top Contact Bar (Hides on scroll) */}
+      {!scrolled && (
+        <div className="bg-slate-50 py-2 border-b border-slate-200 hidden lg:block">
+          <div className="max-w-[1440px] mx-auto px-6 flex justify-between items-center text-[11px] font-black text-primary uppercase tracking-widest">
+            <div className="flex items-center gap-8">
+              <span className="flex items-center gap-2"><Phone size={12} className="text-secondary" /> +91-9811238150</span>
+              <span className="flex items-center gap-2"><Mail size={12} className="text-secondary" /> info@opticstechnology.in</span>
             </div>
-
-            <button className="lg:hidden text-white hover:text-secondary transition-colors p-2 glass rounded-xl" onClick={() => setIsOpen(!isOpen)}>
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+            <div className="flex items-center gap-6">
+               <img src="/assets/images/trust logo.png" alt="46 Years Trust" className="h-8" />
+               <div className="relative">
+                <input type="text" placeholder="Search..." className="pl-4 pr-8 py-1 bg-white border border-slate-200 rounded-full w-40 focus:w-60 transition-all outline-none" />
+                <Search className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400" size={12} />
+               </div>
+            </div>
+          </div>
         </div>
+      )}
 
-        {/* Mobile Menu */}
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div 
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              className="lg:hidden glass mx-6 mt-4 rounded-3xl overflow-hidden"
-            >
-              <div className="flex flex-col p-6 gap-4">
+      {/* 2. Main Branding Row (Sticky) */}
+      <div className={`bg-white transition-all duration-500 ${scrolled ? 'py-2 shadow-lg border-b border-slate-100' : 'py-8 md:py-12'}`}>
+        <div className="max-w-[1440px] mx-auto px-6 flex justify-between lg:justify-center items-center">
+          
+          {/* Logo & Text (Centered in container) */}
+          <Link to="/" className={`flex items-center gap-4 md:gap-8 group transition-all duration-500 ${scrolled ? 'scale-90' : 'scale-100'}`}>
+            <div className={`flex-shrink-0 bg-white border-black rounded-full flex items-center justify-center text-black font-black transition-all duration-500 shadow-2xl ${scrolled ? 'w-12 h-12 text-2xl border-[3px]' : 'w-24 h-24 md:w-36 md:h-36 text-5xl md:text-8xl border-[8px]'}`}>
+              T
+            </div>
+            <div className="flex items-baseline gap-2 md:gap-5">
+              <h1 className={`text-primary font-black tracking-tighter transition-all duration-500 uppercase ${scrolled ? 'text-2xl md:text-3xl' : 'text-4xl md:text-9xl'}`}>
+                OPTICS
+              </h1>
+              <h2 className={`text-primary font-black tracking-tighter transition-all duration-500 uppercase ${scrolled ? 'text-2xl md:text-3xl' : 'text-4xl md:text-9xl'}`}>
+                Technology
+              </h2>
+            </div>
+          </Link>
+
+          {/* Mobile Menu Toggle (Visible only on mobile) */}
+          <button className="lg:hidden text-primary p-2" onClick={() => setIsOpen(!isOpen)}>
+            <Menu size={32} />
+          </button>
+        </div>
+      </div>
+
+      {/* 3. Navigation Row (Sticky, Hides on scroll if you want, or stays) */}
+      <nav className={`bg-primary transition-all duration-500 ${scrolled ? 'h-0 opacity-0 overflow-hidden' : 'h-14 opacity-100 shadow-xl'} hidden lg:block`}>
+        <div className="max-w-7xl mx-auto h-full px-4 flex justify-center items-center">
+          <div className="flex items-center gap-1">
+            {navLinks.map((link) => (
+              <Link 
+                key={link.name} 
+                to={link.href}
+                className="px-6 py-2 text-sm font-bold text-white hover:text-secondary transition-all relative group"
+              >
+                {link.name}
+                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-1 bg-secondary group-hover:w-full transition-all"></span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </nav>
+
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div 
+            initial={{ opacity: 0, x: '100%' }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: '100%' }}
+            className="fixed inset-0 z-[60] bg-white lg:hidden"
+          >
+            <div className="p-6 flex flex-col h-full">
+              <div className="flex justify-between items-center mb-12">
+                <div className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center text-white font-bold">T</div>
+                <button onClick={() => setIsOpen(false)} className="p-2 bg-slate-100 rounded-full"><X size={24} /></button>
+              </div>
+              <div className="flex flex-col gap-6">
                 {navLinks.map((link) => (
-                  <Link key={link.name} to={link.href} className="text-lg font-bold text-white hover:text-secondary" onClick={() => setIsOpen(false)}>
+                  <Link 
+                    key={link.name} 
+                    to={link.href} 
+                    className="text-4xl font-black text-primary border-b border-slate-100 pb-4"
+                    onClick={() => setIsOpen(false)}
+                  >
                     {link.name}
                   </Link>
                 ))}
               </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-    </nav>
+              <div className="mt-auto">
+                <button 
+                  onClick={() => { setIsOpen(false); onQuoteClick(); }}
+                  className="w-full py-5 bg-accent-red text-white font-black rounded-2xl shadow-xl uppercase"
+                >
+                  GET A QUOTE
+                </button>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </header>
   );
 };
 

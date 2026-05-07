@@ -43,7 +43,7 @@ const QuoteModal = ({ isOpen, onClose, productName }) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="absolute inset-0 bg-slate-900/95 backdrop-blur-md"
+          className="absolute inset-0 bg-primary/95 backdrop-blur-md"
           onClick={onClose}
         />
         <motion.div 
@@ -100,9 +100,9 @@ const QuoteModal = ({ isOpen, onClose, productName }) => {
             <button 
               type="submit" 
               disabled={isSubmitting}
-              className="w-full bg-primary text-white py-5 rounded-2xl font-black text-lg flex items-center justify-center gap-3 hover:bg-dark transition-all transform active:scale-95 shadow-xl shadow-primary/20 disabled:opacity-50"
+              className="w-full bg-accent-red text-white py-5 rounded-2xl font-black text-lg flex items-center justify-center gap-3 hover:bg-red-700 transition-all transform active:scale-95 shadow-xl shadow-red-900/20 disabled:opacity-50"
             >
-              {isSubmitting ? 'Sending...' : 'Send Inquiry'} <Send size={20} />
+              {isSubmitting ? 'Sending...' : 'SEND INQUIRY'} <Send size={20} />
             </button>
           </form>
         </motion.div>

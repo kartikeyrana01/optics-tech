@@ -29,9 +29,9 @@ const ProductListingPage = () => {
   const categoryTitle = category.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
 
   return (
-    <div className="pt-24 min-h-screen bg-slate-50">
+    <div className="pt-[400px] min-h-screen bg-white">
       {/* Header */}
-      <section className="pt-32 pb-20 bg-dark text-white">
+      <section className="pt-32 pb-20 bg-primary text-white">
         <div className="max-w-7xl mx-auto px-6">
           <Link to="/products" className="inline-flex items-center gap-2 text-secondary font-bold mb-6 hover:gap-4 transition-all">
             <ArrowLeft size={20} /> Back to Categories

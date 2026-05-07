@@ -1,70 +1,81 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, ShieldCheck } from 'lucide-react';
+import { ArrowRight, Globe, ShieldCheck, Award } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
-      {/* Background with Overlay */}
-      <div className="absolute inset-0 z-0">
-        <img 
-          src="https://images.unsplash.com/photo-1614935151651-0bea6508db6b?w=1920&auto=format&fit=crop&q=80&ixlib=rb-4.1.0" 
-          className="w-full h-full object-cover opacity-30" 
-          alt="Chemical Lab" 
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-dark via-transparent to-dark"></div>
+    <section className="relative pt-[400px]">
+      {/* Yellow Slogan Bar */}
+      <div className="bg-secondary py-3.5 shadow-md relative z-10">
+        <div className="max-w-7xl mx-auto px-4 text-center">
+          <p className="text-primary font-black text-lg md:text-xl tracking-tight uppercase">
+            Manufacturer & Exporters of <span className="text-black">Laboratory Testing Instruments</span>
+          </p>
+        </div>
       </div>
 
-      <div className="container mx-auto px-6 relative z-10 text-center">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="inline-flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-2 rounded-full text-xs font-bold tracking-widest text-secondary mb-8 uppercase"
-        >
-          <ShieldCheck size={16} /> ISO 9001:2015 Certified
-        </motion.div>
+      {/* Main Image Section */}
+      <div className="relative h-[600px] md:h-[750px] overflow-hidden">
+        <img 
+          src="/assets/images/lab_room.png" 
+          className="w-full h-full object-cover" 
+          alt="Modern Laboratory Facility" 
+        />
         
-        <motion.h1 
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="text-6xl md:text-8xl font-extrabold mb-8 tracking-tight leading-none text-gradient"
-        >
-          Precision Beyond <br /> <span className="text-secondary italic">Boundaries.</span>
-        </motion.h1>
-        
-        <motion.p 
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4 }}
-          className="text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto mb-12 leading-relaxed"
-        >
-          Global leaders in manufacturing and exporting state-of-the-art laboratory testing instruments since 1980.
-        </motion.p>
-        
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6 }}
-          className="flex flex-col sm:flex-row gap-6 justify-center items-center"
-        >
-          <Link to="/products" className="px-10 py-5 bg-primary text-white rounded-full font-bold text-lg hover:bg-white hover:text-dark transition-all flex items-center gap-3">
-            View Catalog <ArrowRight />
-          </Link>
-          <div className="flex items-center gap-4 text-slate-400">
-            <div className="flex -space-x-4">
-              {[1, 2, 3].map(i => (
-                <img key={i} src={`https://i.pravatar.cc/100?img=${i+10}`} className="w-10 h-10 rounded-full border-2 border-dark" alt="User" />
-              ))}
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/40 to-transparent"></div>
+
+        {/* Text Content Overlay */}
+        <div className="absolute inset-0 flex flex-col items-center justify-end pb-24 text-center px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="max-w-4xl"
+          >
+            <h1 className="text-4xl md:text-7xl font-black text-white mb-6 tracking-tighter leading-none">
+              Serving Our Customers <br /> 
+              <span className="text-secondary italic">for the Past 46 Years</span>
+            </h1>
+            <p className="text-white/80 text-xl md:text-2xl font-medium mb-10 max-w-2xl mx-auto">
+              Delivering precision-engineered solutions to elite labs and industrial facilities worldwide.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-6 justify-center">
+              <Link to="/products" className="px-10 py-5 bg-primary text-white rounded-full font-black text-lg hover:bg-white hover:text-primary transition-all shadow-2xl flex items-center gap-3 group">
+                EXPLORE CATALOGUE <ArrowRight className="group-hover:translate-x-2 transition-transform" />
+              </Link>
+              <a href="/certificates" className="px-10 py-5 bg-white/10 backdrop-blur-md text-white border border-white/20 rounded-full font-bold text-lg hover:bg-white hover:text-dark transition-all">
+                VIEW CERTIFICATIONS
+              </a>
             </div>
-            <span className="text-sm font-medium">Trusted by 5000+ Labs</span>
+          </motion.div>
+        </div>
+
+        {/* Floating Badges */}
+        <div className="absolute top-10 right-10 hidden lg:flex flex-col gap-4">
+          <div className="flex items-center gap-3 bg-white/90 backdrop-blur px-5 py-3 rounded-2xl shadow-xl border border-white">
+            <ShieldCheck className="text-primary" size={24} />
+            <div className="flex flex-col">
+              <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Certified</span>
+              <span className="text-sm font-bold text-primary">ISO 9001:2015</span>
+            </div>
           </div>
-        </motion.div>
+          <div className="flex items-center gap-3 bg-white/90 backdrop-blur px-5 py-3 rounded-2xl shadow-xl border border-white">
+            <Globe className="text-primary" size={24} />
+            <div className="flex flex-col">
+              <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Global Export</span>
+              <span className="text-sm font-bold text-primary">50+ Countries</span>
+            </div>
+          </div>
+        </div>
       </div>
-      
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-50 text-white">
-        <ArrowRight size={32} className="rotate-90" />
+
+      {/* Floating Scroll Indicator */}
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/50 animate-bounce cursor-pointer">
+        <span className="text-[10px] font-bold uppercase tracking-[0.3em]">Scroll</span>
+        <ArrowRight size={24} className="rotate-90" />
       </div>
     </section>
   );
