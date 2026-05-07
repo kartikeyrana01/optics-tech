@@ -317,6 +317,9 @@
 
         document.getElementById('product-form').onsubmit = async (e) => {
             e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            btn.textContent = 'Uploading...';
+            btn.disabled = true;
             const formData = new FormData();
             ['name', 'model', 'category', 'description', 'optional', 'related'].forEach(id => {
                 formData.append(id, document.getElementById(id).value);
@@ -324,12 +327,22 @@
             const imageFile = document.getElementById('image').files[0];
             if (imageFile) formData.append('image', imageFile);
 
-            const res = await fetch(API_URL, { method: 'POST', body: formData });
-            if (res.ok) {
-                alert('Product Published Successfully!');
-                closeModal('product');
-                document.getElementById('product-form').reset();
-                fetchProducts();
+            try {
+                const res = await fetch(API_URL, { method: 'POST', body: formData });
+                const data = await res.json();
+                if (res.ok) {
+                    alert('✅ Product Published Successfully!');
+                    closeModal('product');
+                    document.getElementById('product-form').reset();
+                    fetchProducts();
+                } else {
+                    alert('❌ Error: ' + (data.error || 'Upload failed'));
+                }
+            } catch (err) {
+                alert('❌ Network Error: ' + err.message);
+            } finally {
+                btn.textContent = 'PUBLISH LISTING';
+                btn.disabled = false;
             }
         };
 
@@ -358,14 +371,30 @@
 
         document.getElementById('gallery-form').onsubmit = async (e) => {
             e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            btn.textContent = 'Uploading...';
+            btn.disabled = true;
             const formData = new FormData();
             formData.append('caption', document.getElementById('caption').value);
             formData.append('image', document.getElementById('gallery-image').files[0]);
 
-            await fetch(GALLERY_API, { method: 'POST', body: formData });
-            closeModal('gallery');
-            document.getElementById('gallery-form').reset();
-            fetchGallery();
+            try {
+                const res = await fetch(GALLERY_API, { method: 'POST', body: formData });
+                const data = await res.json();
+                if (res.ok) {
+                    alert('✅ Photo Uploaded Successfully!');
+                    closeModal('gallery');
+                    document.getElementById('gallery-form').reset();
+                    fetchGallery();
+                } else {
+                    alert('❌ Error: ' + (data.error || 'Upload failed'));
+                }
+            } catch (err) {
+                alert('❌ Network Error: ' + err.message);
+            } finally {
+                btn.textContent = 'UPLOAD TO GALLERY';
+                btn.disabled = false;
+            }
         };
 
         async function deleteGalleryItem(id) {
