@@ -10,7 +10,7 @@ const GallerySection = () => {
   useEffect(() => {
     const fetchGallery = async () => {
       try {
-        const res = await fetch('http://localhost:3000/api/gallery');
+        const res = await fetch('/api/gallery');
         const data = await res.json();
         setImages(data);
       } catch (err) {
@@ -59,7 +59,7 @@ const GallerySection = () => {
               onClick={() => setSelectedImage(img)}
             >
               <img
-                src={img.url.startsWith('http') ? img.url : `http://localhost:3000${img.url}`}
+                src={img.url}
                 alt={img.caption}
                 className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-110"
               />
@@ -101,7 +101,7 @@ const GallerySection = () => {
               onClick={(e) => e.stopPropagation()}
             >
               <img
-                src={selectedImage.url.startsWith('http') ? selectedImage.url : `http://localhost:3000${selectedImage.url}`}
+                src={selectedImage.url}
                 alt={selectedImage.caption}
                 className="max-h-[80vh] w-auto rounded-3xl shadow-2xl border border-white/10"
               />

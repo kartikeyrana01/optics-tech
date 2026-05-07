@@ -51,7 +51,7 @@ const GalleryImage = mongoose.model('GalleryImage', GallerySchema);
 app.use(cors());
 app.use(bodyParser.json());
 app.use('/uploads', express.static(UPLOADS_DIR));
-app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname, 'client/dist')));
 
 // Setup Multer for image uploads
 const storage = multer.diskStorage({
@@ -205,6 +205,11 @@ app.delete('/api/gallery/:id', async (req, res) => {
 // Route for /admin
 app.get('/admin', (req, res) => {
     res.sendFile(path.join(__dirname, 'admin.html'));
+});
+
+// Catch-all route to serve the React app
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client/dist', 'index.html'));
 });
 
 app.listen(PORT, () => {

@@ -18,7 +18,7 @@ import ScrollToTop from './components/ScrollToTop'
 
 function AdminRedirect() {
   React.useEffect(() => {
-    window.location.href = 'http://localhost:3000/admin';
+    window.location.href = '/admin';
   }, []);
   return <div className="min-h-screen bg-dark flex items-center justify-center text-white">Redirecting to Staff Portal...</div>;
 }
@@ -75,7 +75,7 @@ function App() {
             <div className="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-6 text-slate-400">
                <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
                <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
-               <a href="http://localhost:3000/admin" className="text-secondary font-bold hover:text-white transition-colors">Staff Admin</a>
+               <a href="/admin" className="text-secondary font-bold hover:text-white transition-colors">Staff Admin</a>
             </div>
           </div>
         </footer>

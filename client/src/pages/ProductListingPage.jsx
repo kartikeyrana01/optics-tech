@@ -13,7 +13,7 @@ const ProductListingPage = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch('http://localhost:3000/api/products')
+    fetch('/api/products')
       .then(res => res.json())
       .then(data => {
         const filtered = data.filter(p => p.category === category);
@@ -75,7 +75,7 @@ const ProductListingPage = () => {
                   <div>
                     <div className="aspect-video bg-slate-100 rounded-3xl mb-6 overflow-hidden relative">
                       <img 
-                        src={p.image ? (p.image.startsWith('http') ? p.image : `http://localhost:3000${p.image}`) : 'https://images.unsplash.com/photo-1579154235602-3c35bd799430?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'} 
+                        src={p.image ? (p.image.startsWith('http') ? p.image : p.image) : 'https://images.unsplash.com/photo-1579154235602-3c35bd799430?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'} 
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
                         alt={p.name} 
                       />
@@ -122,7 +122,7 @@ const ProductListingPage = () => {
               <div className="md:w-1/2 bg-slate-100 p-8 md:p-12 flex flex-col items-center justify-center border-r border-slate-200">
                 <div className="w-full aspect-square bg-white rounded-3xl shadow-lg p-10 mb-8 border border-slate-100 flex items-center justify-center">
                   <img 
-                    src={selectedProduct.image ? (selectedProduct.image.startsWith('http') ? selectedProduct.image : `http://localhost:3000${selectedProduct.image}`) : 'https://images.unsplash.com/photo-1579154235602-3c35bd799430?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'} 
+                    src={selectedProduct.image ? (selectedProduct.image.startsWith('http') ? selectedProduct.image : selectedProduct.image) : 'https://images.unsplash.com/photo-1579154235602-3c35bd799430?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'} 
                     className="w-full h-full object-contain" 
                     alt={selectedProduct.name} 
                   />

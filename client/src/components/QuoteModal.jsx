@@ -14,7 +14,7 @@ const QuoteModal = ({ isOpen, onClose, productName }) => {
     e.preventDefault();
     setIsSubmitting(true);
     try {
-      const res = await fetch('http://localhost:3000/api/enquiries', {
+      const res = await fetch('/api/enquiries', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...formData, productName })

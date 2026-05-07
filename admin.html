@@ -84,7 +84,7 @@
                 <button onclick="showTab('enquiries')" id="btn-enquiries" class="flex-shrink-0 flex items-center gap-3 p-4 md:p-5 hover:bg-white/5 text-slate-400 hover:text-white rounded-3xl md:rounded-[2rem] font-bold transition-all text-left group">
                     <i data-lucide="mail" class="w-5 h-5 md:w-6 md:h-6 group-hover:scale-110 transition-transform"></i> Enquiries
                 </button>
-                <a href="http://localhost:5173/" class="flex-shrink-0 flex items-center gap-3 p-4 md:p-5 text-slate-400 hover:text-white rounded-3xl md:rounded-[2rem] font-bold transition-all group">
+                <a href="/" class="flex-shrink-0 flex items-center gap-3 p-4 md:p-5 text-slate-400 hover:text-white rounded-3xl md:rounded-[2rem] font-bold transition-all group">
                     <i data-lucide="external-link" class="w-5 h-5 md:w-6 md:h-6 group-hover:scale-110 transition-transform"></i> Visit Site
                 </a>
             </nav>
@@ -250,9 +250,9 @@
     <script>
         lucide.createIcons();
 
-        const API_URL = 'http://localhost:3000/api/products';
-        const GALLERY_API = 'http://localhost:3000/api/gallery';
-        const ENQUIRY_API = 'http://localhost:3000/api/enquiries';
+        const API_URL = '/api/products';
+        const GALLERY_API = '/api/gallery';
+        const ENQUIRY_API = '/api/enquiries';
 
         // Tab Management
         function showTab(tab) {
