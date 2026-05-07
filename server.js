@@ -4,8 +4,7 @@ const cors = require('cors');
 const fs = require('fs-extra');
 const path = require('path');
 const multer = require('multer');
-const { v2: cloudinary } = require('cloudinary');
-const { CloudinaryStorage } = require('multer-storage-cloudinary');
+const cloudinary = require('cloudinary').v2;
 const mongoose = require('mongoose');
 const nodemailer = require('nodemailer');
 
@@ -62,14 +61,22 @@ cloudinary.config({
     api_secret: process.env.CLOUDINARY_API_SECRET
 });
 
-const storage = new CloudinaryStorage({
-    cloudinary: cloudinary,
-    params: {
-        folder: 'optics-technology',
-        allowed_formats: ['jpg', 'jpeg', 'png', 'webp']
-    }
-});
-const upload = multer({ storage: storage });
+// Use memory storage - upload buffer directly to Cloudinary
+const upload = multer({ storage: multer.memoryStorage() });
+
+// Helper function to upload buffer to Cloudinary
+function uploadToCloudinary(buffer) {
+    return new Promise((resolve, reject) => {
+        const stream = cloudinary.uploader.upload_stream(
+            { folder: 'optics-technology' },
+            (error, result) => {
+                if (error) return reject(error);
+                resolve(result.secure_url);
+            }
+        );
+        stream.end(buffer);
+    });
+}
 
 // --- EMAIL TRANSPORTER CONFIGURATION ---
 // IMPORTANT: Replace 'YOUR_EMAIL@gmail.com' and 'YOUR_APP_PASSWORD' with your actual Gmail and an App Password.
@@ -147,9 +154,13 @@ app.get('/api/products', async (req, res) => {
 
 app.post('/api/products', upload.single('image'), async (req, res) => {
     try {
+        let imageUrl = null;
+        if (req.file) {
+            imageUrl = await uploadToCloudinary(req.file.buffer);
+        }
         const productData = {
             ...req.body,
-            image: req.file ? req.file.path : null
+            image: imageUrl
         };
         const newProduct = new Product(productData);
         await newProduct.save();
@@ -180,8 +191,12 @@ app.get('/api/gallery', async (req, res) => {
 
 app.post('/api/gallery', upload.single('image'), async (req, res) => {
     try {
+        let imageUrl = null;
+        if (req.file) {
+            imageUrl = await uploadToCloudinary(req.file.buffer);
+        }
         const newImage = new GalleryImage({
-            url: req.file ? req.file.path : null,
+            url: imageUrl,
             caption: req.body.caption || 'Optics Technology Event'
         });
         await newImage.save();
