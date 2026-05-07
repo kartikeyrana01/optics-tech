@@ -202,7 +202,8 @@ app.post('/api/gallery', upload.single('image'), async (req, res) => {
         await newImage.save();
         res.json(newImage);
     } catch (err) {
-        res.status(500).json({ error: "Failed to upload image" });
+        console.error("Gallery Upload Error: ", err);
+        res.status(500).json({ error: "Failed to upload image: " + (err.message || err.toString()) });
     }
 });
 
