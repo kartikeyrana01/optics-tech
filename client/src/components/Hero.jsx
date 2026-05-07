@@ -9,7 +9,7 @@ const Hero = () => {
       {/* Background with Overlay */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" 
+          src="https://images.unsplash.com/photo-1614935151651-0bea6508db6b?w=1920&auto=format&fit=crop&q=80&ixlib=rb-4.1.0" 
           className="w-full h-full object-cover opacity-30" 
           alt="Chemical Lab" 
         />
