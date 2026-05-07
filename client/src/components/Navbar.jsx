@@ -51,14 +51,14 @@ const Navbar = ({ onQuoteClick }) => {
           
           {/* Logo & Text (Centered in container) */}
           <Link to="/" className={`flex items-center gap-2 md:gap-8 group transition-all duration-500 ${scrolled ? 'scale-90' : 'scale-100'}`}>
-            <div className={`flex-shrink-0 bg-white border-black rounded-full flex items-center justify-center text-black font-black transition-all duration-500 shadow-2xl ${scrolled ? 'w-10 h-10 text-lg border-[2px]' : 'w-16 h-16 md:w-36 md:h-36 text-2xl md:text-8xl border-[4px] md:border-[8px]'}`}>
+            <div className={`flex-shrink-0 bg-white border-black rounded-full flex items-center justify-center text-black font-black transition-all duration-500 shadow-2xl ${scrolled ? 'w-10 h-10 text-lg border-[2px]' : 'w-16 h-16 md:w-28 md:h-28 text-2xl md:text-6xl border-[4px] md:border-[8px]'}`}>
               T
             </div>
-            <div className="flex items-baseline gap-1 md:gap-5">
-              <h1 className={`text-primary font-black tracking-tighter transition-all duration-500 uppercase ${scrolled ? 'text-lg md:text-3xl' : 'text-2xl md:text-9xl'}`}>
+            <div className="flex items-baseline gap-1 md:gap-4">
+              <h1 className={`text-primary font-black tracking-tighter transition-all duration-500 uppercase ${scrolled ? 'text-lg md:text-3xl' : 'text-2xl md:text-5xl lg:text-7xl'}`}>
                 OPTICS
               </h1>
-              <h2 className={`text-primary font-black tracking-tighter transition-all duration-500 uppercase ${scrolled ? 'text-lg md:text-3xl' : 'text-2xl md:text-9xl'}`}>
+              <h2 className={`text-primary font-black tracking-tighter transition-all duration-500 uppercase ${scrolled ? 'text-lg md:text-3xl' : 'text-2xl md:text-5xl lg:text-7xl'}`}>
                 Technology
               </h2>
             </div>
