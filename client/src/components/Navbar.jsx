@@ -103,12 +103,12 @@ const Navbar = ({ onQuoteClick }) => {
                 <div className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center text-white font-bold">T</div>
                 <button onClick={() => setIsOpen(false)} className="p-2 bg-slate-100 rounded-full"><X size={24} /></button>
               </div>
-              <div className="flex flex-col gap-6">
+              <div className="flex flex-col gap-4">
                 {navLinks.map((link) => (
                   <Link 
                     key={link.name} 
                     to={link.href} 
-                    className="text-4xl font-black text-primary border-b border-slate-100 pb-4"
+                    className="text-2xl font-black text-primary border-b border-slate-100 pb-3"
                     onClick={() => setIsOpen(false)}
                   >
                     {link.name}
