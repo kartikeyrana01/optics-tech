@@ -4,6 +4,8 @@ const cors = require('cors');
 const fs = require('fs-extra');
 const path = require('path');
 const multer = require('multer');
+const { v2: cloudinary } = require('cloudinary');
+const { CloudinaryStorage } = require('multer-storage-cloudinary');
 const mongoose = require('mongoose');
 const nodemailer = require('nodemailer');
 
@@ -53,14 +55,18 @@ app.use(bodyParser.json());
 app.use('/uploads', express.static(UPLOADS_DIR));
 app.use(express.static(path.join(__dirname, 'client/dist')));
 
-// Setup Multer for image uploads
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        if (!fs.existsSync(UPLOADS_DIR)) fs.mkdirSync(UPLOADS_DIR);
-        cb(null, UPLOADS_DIR);
-    },
-    filename: (req, file, cb) => {
-        cb(null, Date.now() + path.extname(file.originalname));
+// --- CLOUDINARY CONFIGURATION ---
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET
+});
+
+const storage = new CloudinaryStorage({
+    cloudinary: cloudinary,
+    params: {
+        folder: 'optics-technology',
+        allowed_formats: ['jpg', 'jpeg', 'png', 'webp']
     }
 });
 const upload = multer({ storage: storage });
@@ -143,7 +149,7 @@ app.post('/api/products', upload.single('image'), async (req, res) => {
     try {
         const productData = {
             ...req.body,
-            image: req.file ? `/uploads/${req.file.filename}` : null
+            image: req.file ? req.file.path : null
         };
         const newProduct = new Product(productData);
         await newProduct.save();
@@ -155,11 +161,7 @@ app.post('/api/products', upload.single('image'), async (req, res) => {
 
 app.delete('/api/products/:id', async (req, res) => {
     try {
-        const product = await Product.findByIdAndDelete(req.params.id);
-        if (product && product.image) {
-            const imagePath = path.join(__dirname, product.image);
-            if (fs.existsSync(imagePath)) fs.unlinkSync(imagePath);
-        }
+        await Product.findByIdAndDelete(req.params.id);
         res.json({ success: true });
     } catch (err) {
         res.status(500).json({ error: "Failed to delete product" });
@@ -179,7 +181,7 @@ app.get('/api/gallery', async (req, res) => {
 app.post('/api/gallery', upload.single('image'), async (req, res) => {
     try {
         const newImage = new GalleryImage({
-            url: `/uploads/${req.file.filename}`,
+            url: req.file ? req.file.path : null,
             caption: req.body.caption || 'Optics Technology Event'
         });
         await newImage.save();
@@ -191,11 +193,7 @@ app.post('/api/gallery', upload.single('image'), async (req, res) => {
 
 app.delete('/api/gallery/:id', async (req, res) => {
     try {
-        const image = await GalleryImage.findByIdAndDelete(req.params.id);
-        if (image && image.url) {
-            const imagePath = path.join(__dirname, image.url);
-            if (fs.existsSync(imagePath)) fs.unlinkSync(imagePath);
-        }
+        await GalleryImage.findByIdAndDelete(req.params.id);
         res.json({ success: true });
     } catch (err) {
         res.status(500).json({ error: "Failed to delete image" });
