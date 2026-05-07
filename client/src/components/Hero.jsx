@@ -9,7 +9,7 @@ const Hero = () => {
       {/* Background with Overlay */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="https://imgs.search.brave.com/_3s3fJS0AS7UD2jkjL-plBMqI2kQnvhtHvOkSBFgmeY/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93d3cu/c2h1dHRlcnN0b2Nr/LmNvbS9pbWFnZS1w/aG90by9tZWRpY2Fs/LXJlc2VhcmNoLWxh/Ym9yYXRvcnktbWFs/ZS1zY2llbnRpc3Qt/MjYwbnctMTkyNDUx/MjUyNy5qcGc" 
+          src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" 
           className="w-full h-full object-cover opacity-30" 
           alt="Chemical Lab" 
         />
