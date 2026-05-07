@@ -4,7 +4,7 @@ import { CheckCircle, Microscope, ShieldCheck, Box } from 'lucide-react';
 
 const FacilityPage = () => {
   return (
-    <div className="pt-[400px] min-h-screen bg-primary">
+    <div className="pt-[180px] md:pt-[400px] min-h-screen bg-primary">
       {/* Header */}
       <section className="pt-32 pb-20 bg-gradient-to-b from-primary to-primary/80">
         <div className="max-w-7xl mx-auto px-6">

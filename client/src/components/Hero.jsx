@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const Hero = () => {
   return (
-    <section className="relative pt-[400px]">
+    <section className="relative pt-[180px] md:pt-[400px]">
       {/* Yellow Slogan Bar */}
       <div className="bg-secondary py-3.5 shadow-md relative z-10">
         <div className="max-w-7xl mx-auto px-4 text-center">

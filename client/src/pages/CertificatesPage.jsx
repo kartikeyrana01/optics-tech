@@ -103,7 +103,7 @@ const CertificatesPage = () => {
     ];
   
     return (
-      <div className="min-h-screen bg-dark pt-[400px] pb-20">
+      <div className="min-h-screen bg-dark pt-[180px] md:pt-[400px] pb-20">
         <div className="max-w-7xl mx-auto px-4">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}

@@ -46,27 +46,27 @@ const Navbar = ({ onQuoteClick }) => {
       )}
 
       {/* 2. Main Branding Row (Sticky) */}
-      <div className={`bg-white transition-all duration-500 ${scrolled ? 'py-2 shadow-lg border-b border-slate-100' : 'py-8 md:py-12'}`}>
-        <div className="max-w-[1440px] mx-auto px-6 flex justify-between lg:justify-center items-center">
+      <div className={`bg-white transition-all duration-500 ${scrolled ? 'py-2 shadow-lg border-b border-slate-100' : 'py-4 md:py-12'}`}>
+        <div className="max-w-[1440px] mx-auto px-4 md:px-6 flex justify-between lg:justify-center items-center">
           
           {/* Logo & Text (Centered in container) */}
-          <Link to="/" className={`flex items-center gap-4 md:gap-8 group transition-all duration-500 ${scrolled ? 'scale-90' : 'scale-100'}`}>
-            <div className={`flex-shrink-0 bg-white border-black rounded-full flex items-center justify-center text-black font-black transition-all duration-500 shadow-2xl ${scrolled ? 'w-12 h-12 text-2xl border-[3px]' : 'w-24 h-24 md:w-36 md:h-36 text-5xl md:text-8xl border-[8px]'}`}>
+          <Link to="/" className={`flex items-center gap-2 md:gap-8 group transition-all duration-500 ${scrolled ? 'scale-90' : 'scale-100'}`}>
+            <div className={`flex-shrink-0 bg-white border-black rounded-full flex items-center justify-center text-black font-black transition-all duration-500 shadow-2xl ${scrolled ? 'w-10 h-10 text-lg border-[2px]' : 'w-16 h-16 md:w-36 md:h-36 text-2xl md:text-8xl border-[4px] md:border-[8px]'}`}>
               T
             </div>
-            <div className="flex items-baseline gap-2 md:gap-5">
-              <h1 className={`text-primary font-black tracking-tighter transition-all duration-500 uppercase ${scrolled ? 'text-2xl md:text-3xl' : 'text-4xl md:text-9xl'}`}>
+            <div className="flex items-baseline gap-1 md:gap-5">
+              <h1 className={`text-primary font-black tracking-tighter transition-all duration-500 uppercase ${scrolled ? 'text-lg md:text-3xl' : 'text-2xl md:text-9xl'}`}>
                 OPTICS
               </h1>
-              <h2 className={`text-primary font-black tracking-tighter transition-all duration-500 uppercase ${scrolled ? 'text-2xl md:text-3xl' : 'text-4xl md:text-9xl'}`}>
+              <h2 className={`text-primary font-black tracking-tighter transition-all duration-500 uppercase ${scrolled ? 'text-lg md:text-3xl' : 'text-2xl md:text-9xl'}`}>
                 Technology
               </h2>
             </div>
           </Link>
 
-          {/* Mobile Menu Toggle (Visible only on mobile) */}
-          <button className="lg:hidden text-primary p-2" onClick={() => setIsOpen(!isOpen)}>
-            <Menu size={32} />
+          {/* Mobile Menu Toggle */}
+          <button className="lg:hidden text-primary p-2 hover:bg-slate-50 rounded-lg transition-all" onClick={() => setIsOpen(!isOpen)}>
+            {isOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
       </div>
