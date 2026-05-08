@@ -123,7 +123,7 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-6 text-center">
           <h2 className="text-5xl md:text-7xl font-black text-dark mb-8 tracking-tighter">Ready to equip your lab?</h2>
           <p className="text-xl text-slate-500 max-w-2xl mx-auto mb-12 font-medium">Get in touch for custom instrument configurations and global export terms.</p>
-          <Link to="/#contact" className="inline-flex items-center gap-4 px-12 py-6 bg-primary text-white rounded-full font-black text-xl hover:bg-dark transition-all shadow-2xl shadow-primary/30 transform hover:-translate-y-2">
+          <Link to="/contact" className="inline-flex items-center gap-4 px-12 py-6 bg-primary text-white rounded-full font-black text-xl hover:bg-dark transition-all shadow-2xl shadow-primary/30 transform hover:-translate-y-2">
             Get a Quote <ArrowRight />
           </Link>
         </div>

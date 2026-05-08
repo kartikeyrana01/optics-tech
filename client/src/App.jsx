@@ -9,6 +9,8 @@ import ProductListingPage from './pages/ProductListingPage'
 import GalleryPage from './pages/GalleryPage'
 import CertificatesPage from './pages/CertificatesPage'
 import AwardsPage from './pages/AwardsPage'
+import SearchResultsPage from './pages/SearchResultsPage'
+import ContactPage from './pages/ContactPage'
 import ContactSection from './components/ContactSection'
 import { motion, useScroll, useSpring } from 'framer-motion'
 import QuoteModal from './components/QuoteModal'
@@ -47,6 +49,7 @@ function App() {
         <main>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/search" element={<SearchResultsPage />} />
             <Route path="/legacy" element={<LegacyPage />} />
             <Route path="/facility" element={<FacilityPage />} />
             <Route path="/products" element={<ProductCategoriesPage />} />
@@ -54,6 +57,7 @@ function App() {
             <Route path="/gallery" element={<GalleryPage />} />
             <Route path="/certificates" element={<CertificatesPage />} />
             <Route path="/awards" element={<AwardsPage />} />
+            <Route path="/contact" element={<ContactPage />} />
             <Route path="/admin" element={<AdminRedirect />} />
           </Routes>
           

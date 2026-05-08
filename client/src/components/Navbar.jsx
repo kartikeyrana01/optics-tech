@@ -1,17 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Phone, Mail, Search, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Navbar = ({ onQuoteClick }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      navigate(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
+      setSearchQuery('');
+      setIsOpen(false);
+    }
+  };
 
   const navLinks = [
     { name: 'Home', href: '/' },
@@ -21,7 +32,7 @@ const Navbar = ({ onQuoteClick }) => {
     { name: 'Awards', href: '/awards' },
     { name: 'Gallery', href: '/gallery' },
     { name: 'Facility', href: '/facility' },
-    { name: 'Contact Us', href: '/#contact' },
+    { name: 'Contact Us', href: '/contact' },
   ];
 
   return (
@@ -36,10 +47,18 @@ const Navbar = ({ onQuoteClick }) => {
             </div>
             <div className="flex items-center gap-6">
                <img src="/assets/images/trust logo.png" alt="46 Years Trust" className="h-8" />
-               <div className="relative">
-                <input type="text" placeholder="Search..." className="pl-4 pr-8 py-1 bg-white border border-slate-200 rounded-full w-40 focus:w-60 transition-all outline-none" />
-                <Search className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400" size={12} />
-               </div>
+               <form onSubmit={handleSearch} className="relative">
+                <input 
+                  type="text" 
+                  placeholder="Search product..." 
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="pl-4 pr-8 py-1 bg-white border border-slate-200 rounded-full w-40 focus:w-60 transition-all outline-none" 
+                />
+                <button type="submit" className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-primary transition-colors">
+                  <Search size={12} />
+                </button>
+               </form>
             </div>
           </div>
         </div>
@@ -103,7 +122,22 @@ const Navbar = ({ onQuoteClick }) => {
                 <div className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center text-white font-bold">T</div>
                 <button onClick={() => setIsOpen(false)} className="p-2 bg-slate-100 rounded-full"><X size={24} /></button>
               </div>
-              <div className="flex flex-col gap-4">
+
+              {/* Mobile Search */}
+              <form onSubmit={handleSearch} className="relative mb-8">
+                <input 
+                  type="text" 
+                  placeholder="Search product..." 
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full pl-6 pr-12 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:border-primary transition-all outline-none font-bold" 
+                />
+                <button type="submit" className="absolute right-4 top-1/2 -translate-y-1/2 text-primary">
+                  <Search size={24} />
+                </button>
+              </form>
+
+              <div className="flex flex-col gap-4 overflow-y-auto">
                 {navLinks.map((link) => (
                   <Link 
                     key={link.name} 
@@ -132,3 +166,4 @@ const Navbar = ({ onQuoteClick }) => {
 };
 
 export default Navbar;
+
