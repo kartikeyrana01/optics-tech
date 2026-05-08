@@ -53,7 +53,7 @@ const Navbar = ({ onQuoteClick }) => {
                   placeholder="Search product..." 
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-4 pr-8 py-1 bg-white border border-slate-200 rounded-full w-40 focus:w-60 transition-all outline-none" 
+                  className="pl-4 pr-8 py-1 bg-white border border-slate-200 rounded-full w-40 focus:w-60 transition-all outline-none text-dark" 
                 />
                 <button type="submit" className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-primary transition-colors">
                   <Search size={12} />
@@ -130,7 +130,7 @@ const Navbar = ({ onQuoteClick }) => {
                   placeholder="Search product..." 
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-6 pr-12 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:border-primary transition-all outline-none font-bold" 
+                  className="w-full pl-6 pr-12 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:border-primary transition-all outline-none font-bold text-dark" 
                 />
                 <button type="submit" className="absolute right-4 top-1/2 -translate-y-1/2 text-primary">
                   <Search size={24} />

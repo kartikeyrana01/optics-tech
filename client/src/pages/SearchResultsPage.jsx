@@ -39,7 +39,7 @@ const SearchResultsPage = () => {
   }, [query]);
 
   return (
-    <div className="pt-[180px] md:pt-[400px] min-h-screen bg-white">
+    <div className="pt-[180px] md:pt-[400px] min-h-screen bg-white text-dark">
       {/* Header */}
       <section className="py-12 bg-slate-50 border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-6">

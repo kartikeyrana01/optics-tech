@@ -4,7 +4,7 @@ import { MapPin, Phone, Mail, Send, MessageCircle, Clock, Globe } from 'lucide-r
 
 const ContactPage = () => {
   return (
-    <div className="pt-[180px] md:pt-[300px] min-h-screen bg-white">
+    <div className="pt-[180px] md:pt-[300px] min-h-screen bg-white text-dark">
       {/* Hero Section */}
       <section className="bg-primary py-24 text-white relative overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-secondary/20 rounded-full blur-[120px]"></div>
@@ -84,7 +84,7 @@ const ContactPage = () => {
               </div>
 
               <div className="mt-16 p-8 bg-slate-50 rounded-[2.5rem] border border-slate-100">
-                <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+                <h3 className="text-xl font-bold mb-4 flex items-center gap-2 text-dark">
                    <Globe className="text-primary" /> Global Exports
                 </h3>
                 <p className="text-slate-500 font-medium">
@@ -101,20 +101,20 @@ const ContactPage = () => {
                   <div className="grid md:grid-cols-2 gap-8">
                     <div className="space-y-3">
                       <label className="text-xs font-black uppercase tracking-widest text-slate-400 ml-2">Name</label>
-                      <input type="text" placeholder="Your full name" className="w-full px-6 py-5 bg-slate-50 border border-slate-100 rounded-2xl focus:border-primary outline-none transition-all font-bold" />
+                      <input type="text" placeholder="Your full name" className="w-full px-6 py-5 bg-slate-50 border border-slate-100 rounded-2xl focus:border-primary outline-none transition-all font-bold text-dark" />
                     </div>
                     <div className="space-y-3">
                       <label className="text-xs font-black uppercase tracking-widest text-slate-400 ml-2">Mobile</label>
-                      <input type="tel" placeholder="+91 ..." className="w-full px-6 py-5 bg-slate-50 border border-slate-100 rounded-2xl focus:border-primary outline-none transition-all font-bold" />
+                      <input type="tel" placeholder="+91 ..." className="w-full px-6 py-5 bg-slate-50 border border-slate-100 rounded-2xl focus:border-primary outline-none transition-all font-bold text-dark" />
                     </div>
                   </div>
                   <div className="space-y-3">
                     <label className="text-xs font-black uppercase tracking-widest text-slate-400 ml-2">Email</label>
-                    <input type="email" placeholder="example@gmail.com" className="w-full px-6 py-5 bg-slate-50 border border-slate-100 rounded-2xl focus:border-primary outline-none transition-all font-bold" />
+                    <input type="email" placeholder="example@gmail.com" className="w-full px-6 py-5 bg-slate-50 border border-slate-100 rounded-2xl focus:border-primary outline-none transition-all font-bold text-dark" />
                   </div>
                   <div className="space-y-3">
                     <label className="text-xs font-black uppercase tracking-widest text-slate-400 ml-2">How can we help?</label>
-                    <textarea rows="5" placeholder="Tell us about your requirement..." className="w-full px-6 py-5 bg-slate-50 border border-slate-100 rounded-2xl focus:border-primary outline-none transition-all font-bold resize-none"></textarea>
+                    <textarea rows="5" placeholder="Tell us about your requirement..." className="w-full px-6 py-5 bg-slate-50 border border-slate-100 rounded-2xl focus:border-primary outline-none transition-all font-bold resize-none text-dark"></textarea>
                   </div>
                   <button className="w-full py-6 bg-primary text-white rounded-2xl font-black text-xl hover:bg-dark transition-all shadow-xl shadow-primary/20 flex items-center justify-center gap-4 group">
                     Submit Inquiry <Send size={20} className="group-hover:translate-x-2 transition-transform" />
